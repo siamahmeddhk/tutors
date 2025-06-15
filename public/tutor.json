@@ -1,0 +1,52 @@
+
+[
+  {
+    "language": "English",
+    "reactIcon": "FaLanguage",
+    "commonIcon": "HiOutlineChatBubbleLeftRight"
+  },
+  {
+    "language": "Bangla",
+    "reactIcon": "GiIndiaGate",
+    "commonIcon": "FaBook"
+  },
+  {
+    "language": "Spanish",
+    "reactIcon": "GiSpain",
+    "commonIcon": "FaGlobeAmericas"
+  },
+  {
+    "language": "French",
+    "reactIcon": "GiEiffelTower",
+    "commonIcon": "FaBookOpen"
+  },
+  {
+    "language": "German",
+    "reactIcon": "GiBrandenburgGate",
+    "commonIcon": "FaLanguage"
+  },
+  {
+    "language": "Arabic",
+    "reactIcon": "GiDesert",
+    "commonIcon": "FaQuran"
+  },
+  {
+    "language": "Chinese",
+    "reactIcon": "GiChineseTemple",
+    "commonIcon": "FaCommentDots"
+  },
+  {
+    "language": "Japanese",
+    "reactIcon": "GiMountFuji",
+    "commonIcon": "FaPenNib"
+  },
+  {
+    "language": "Hindi",
+    "reactIcon": "GiTajMahal",
+    "commonIcon": "FaComment"
+  }
+]
+
+
+
+
