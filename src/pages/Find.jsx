@@ -55,38 +55,110 @@
 // export default Find;
 
 
+// import React, { useEffect, useState } from "react";
+// import { useParams } from "react-router";
+// import Singletutor from "../com/Singletutor"; // তোমার টিউটর কার্ড কম্পোনেন্ট
+
+// const Find = () => {
+//   const [tutors, setTutors] = useState([]);
+//   const { language } = useParams();
+
+//   useEffect(() => {
+//     if (language) {
+//       fetch(`http://localhost:3000/tutors/${language}`)
+//         .then(res => res.json())
+//         .then(data => setTutors(data))
+//         .catch(err => console.error(err));
+//     } else {
+//       fetch("http://localhost:3000/tutors")
+//         .then(res => res.json())
+//         .then(data => setTutors(data))
+//         .catch(err => console.error(err));
+//     }
+//   }, [language]);
+
+//   return (
+//     <div className="container mx-auto px-4 py-8 min-h-screen bg-gray-50">
+//       <h1 className="text-3xl font-bold text-center mb-8">
+//         {language ? `${language} Tutors` : "All Tutors"}
+//       </h1>
+//       {tutors.length === 0 ? (
+//         <p className="text-center text-gray-600">Loading tutors or no tutors available...</p>
+//       ) : (
+//         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+//           {tutors.map(tutor => (
+//             <Singletutor key={tutor._id} tea={tutor} />
+//           ))}
+//         </div>
+//       )}
+//     </div>
+//   );
+// };
+
+// export default Find;
+
+
+
+
+
+
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router";
-import Singletutor from "../com/Singletutor"; // তোমার টিউটর কার্ড কম্পোনেন্ট
+import Singletutor from "../com/Singletutor";
 
 const Find = () => {
+  const [searchTerm, setSearchTerm] = useState("");
   const [tutors, setTutors] = useState([]);
-  const { language } = useParams();
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    if (language) {
-      fetch(`http://localhost:3000/tutors/${language}`)
-        .then(res => res.json())
-        .then(data => setTutors(data))
-        .catch(err => console.error(err));
-    } else {
+    if (searchTerm.trim() === "") {
+      // Load all tutors when input is empty
       fetch("http://localhost:3000/tutors")
-        .then(res => res.json())
-        .then(data => setTutors(data))
-        .catch(err => console.error(err));
+        .then((res) => res.json())
+        .then((data) => setTutors(data));
+      return;
     }
-  }, [language]);
+
+    const delayDebounce = setTimeout(() => {
+      setLoading(true);
+      fetch(`http://localhost:3000/search?language=${searchTerm}`)
+        .then((res) => res.json())
+        .then((data) => {
+          setTutors(data);
+          setLoading(false);
+        })
+        .catch((err) => {
+          console.error("Error searching:", err);
+          setLoading(false);
+        });
+    }, 400); // debounce delay
+
+    return () => clearTimeout(delayDebounce);
+  }, [searchTerm]);
 
   return (
     <div className="container mx-auto px-4 py-8 min-h-screen bg-gray-50">
-      <h1 className="text-3xl font-bold text-center mb-8">
-        {language ? `${language} Tutors` : "All Tutors"}
+      <h1 className="text-3xl font-bold text-center mb-6">
+        Find a Tutor by Language
       </h1>
-      {tutors.length === 0 ? (
-        <p className="text-center text-gray-600">Loading tutors or no tutors available...</p>
+
+      <div className="mb-6 text-center">
+        <input
+          type="text"
+          placeholder="Type language name..."
+          className="px-4 py-2 border rounded-lg w-64 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+      </div>
+
+      {loading ? (
+        <p className="text-center text-gray-600">Searching tutors...</p>
+      ) : tutors.length === 0 ? (
+        <p className="text-center text-gray-600">No tutors found.</p>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {tutors.map(tutor => (
+          {tutors.map((tutor) => (
             <Singletutor key={tutor._id} tea={tutor} />
           ))}
         </div>
@@ -96,3 +168,4 @@ const Find = () => {
 };
 
 export default Find;
+
