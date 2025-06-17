@@ -10,7 +10,7 @@
 
 //   useEffect(() => {
 //     if (user?.email) {
-//       fetch(`http://localhost:3000/myadded/${user.email}`)
+//       fetch(`https://tutor-s.vercel.app/myadded/${user.email}`)
 //         .then(res => res.json())
 //         .then(data => {
 //           setTutors(data);
@@ -34,7 +34,7 @@
 //       confirmButtonText: 'Yes, delete it!'
 //     }).then((result) => {
 //       if (result.isConfirmed) {
-//         fetch(`http://localhost:3000/tutors/${id}`, {
+//         fetch(`https://tutor-s.vercel.app/tutors/${id}`, {
 //           method: 'DELETE'
 //         })
 //         .then(res => res.json())
@@ -173,7 +173,7 @@ const Myadd = () => {
 
   useEffect(() => {
     if (user?.email) {
-      fetch(`http://localhost:3000/myadded/${user.email}`)
+      fetch(`https://tutor-s.vercel.app/myadded/${user.email}`)
         .then(res => res.json())
         .then(data => {
           setTutors(data);
@@ -197,7 +197,7 @@ const Myadd = () => {
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/tutors/${id}`, {
+        fetch(`https://tutor-s.vercel.app/tutors/${id}`, {
           method: 'DELETE'
         })
         .then(res => res.json())

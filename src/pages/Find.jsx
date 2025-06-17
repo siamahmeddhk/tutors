@@ -8,7 +8,7 @@
 //   const [loading, setLoading] = useState(true); // Optional loading state
 
 //   useEffect(() => {
-//     fetch('http://localhost:3000/tutors')
+//     fetch('https://tutor-s.vercel.app/tutors')
 //       .then(res => {
 //         if (!res.ok) {
 //           throw new Error(`HTTP error! status: ${res.status}`);
@@ -65,12 +65,12 @@
 
 //   useEffect(() => {
 //     if (language) {
-//       fetch(`http://localhost:3000/tutors/${language}`)
+//       fetch(`https://tutor-s.vercel.app/tutors/${language}`)
 //         .then(res => res.json())
 //         .then(data => setTutors(data))
 //         .catch(err => console.error(err));
 //     } else {
-//       fetch("http://localhost:3000/tutors")
+//       fetch("https://tutor-s.vercel.app/tutors")
 //         .then(res => res.json())
 //         .then(data => setTutors(data))
 //         .catch(err => console.error(err));
@@ -100,20 +100,23 @@
 
 
 
-
-
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router";
 import Singletutor from "../com/Singletutor";
 
 const Find = () => {
-  const [searchTerm, setSearchTerm] = useState("");
+  const { language } = useParams(); // 🟢 Language from URL
+  const [searchTerm, setSearchTerm] = useState(language || "");
   const [tutors, setTutors] = useState([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setSearchTerm(language || "");
+  }, [language]);
+
+  useEffect(() => {
     if (searchTerm.trim() === "") {
-      // Load all tutors when input is empty
-      fetch("http://localhost:3000/tutors")
+      fetch("https://tutor-s.vercel.app/tutors")
         .then((res) => res.json())
         .then((data) => setTutors(data));
       return;
@@ -121,7 +124,7 @@ const Find = () => {
 
     const delayDebounce = setTimeout(() => {
       setLoading(true);
-      fetch(`http://localhost:3000/search?language=${searchTerm}`)
+      fetch(`https://tutor-s.vercel.app/search?language=${searchTerm}`)
         .then((res) => res.json())
         .then((data) => {
           setTutors(data);
@@ -131,7 +134,7 @@ const Find = () => {
           console.error("Error searching:", err);
           setLoading(false);
         });
-    }, 400); // debounce delay
+    }, 400);
 
     return () => clearTimeout(delayDebounce);
   }, [searchTerm]);
@@ -168,4 +171,3 @@ const Find = () => {
 };
 
 export default Find;
-

@@ -118,7 +118,7 @@ const Edit = () => {
   });
 
   useEffect(() => {
-    fetch(`http://localhost:3000/tutors`)
+    fetch(`https://tutor-s.vercel.app/tutors`)
       .then(res => res.json())
       .then(data => {
         const found = data.find(tutor => tutor._id === id);
@@ -141,7 +141,7 @@ const Edit = () => {
   const handleSubmit = e => {
     e.preventDefault();
 
-    fetch(`http://localhost:3000/tutors/${id}`, {
+    fetch(`https://tutor-s.vercel.app/tutors/${id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({

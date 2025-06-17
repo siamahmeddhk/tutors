@@ -29,7 +29,7 @@ const Tutordtl = () => {
       bookingTime: new Date().toISOString(),
     };
 
-    fetch("http://localhost:3000/booking", {
+    fetch("https://tutor-s.vercel.app/booking", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -66,7 +66,7 @@ const Tutordtl = () => {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:3000/tutors`)
+    fetch(`https://tutor-s.vercel.app/tutors`)
       .then((res) => res.json())
       .then((data) => {
         const found = data.find((t) => t._id === id);

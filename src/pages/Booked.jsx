@@ -12,7 +12,7 @@ const Booked = () => {
 
     console.log("Fetching bookings for:", user.email);
 
-    fetch(`http://localhost:3000/booking/${user.email}`)
+    fetch(`https://tutor-s.vercel.app/booking/${user.email}`)
       .then((res) => {
         if (!res.ok) {
           console.error("Server responded with status:", res.status);
@@ -46,7 +46,7 @@ const Booked = () => {
       confirmButtonText: 'Yes, delete it!',
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/booking/${id}`, {
+        fetch(`https://tutor-s.vercel.app/booking/${id}`, {
           method: 'DELETE',
         })
           .then((res) => {
