@@ -27,6 +27,7 @@ const Tutordtl = () => {
       price: tutor.price,
       userEmail: user.email,
       bookingTime: new Date().toISOString(),
+      courseId: tutor._id
     };
 
     fetch("https://tutor-s.vercel.app/booking", {
