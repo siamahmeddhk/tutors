@@ -6,10 +6,10 @@ const Banner = () => {
 
   return (
     <div className="relative h-[80vh] bg-center bg-cover" style={{
-      backgroundImage: "url('https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=1500&q=80')"
+      backgroundImage: "url('ban.png')"
     }}>
       {/* Overlay */}
-      <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+      <div className="absolute inset-0 bg-black opacity-55"></div>
 
       {/* Content */}
       <div className="relative z-10 flex flex-col justify-center items-center h-full text-center px-4 text-white">
