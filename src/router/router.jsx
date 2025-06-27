@@ -9,11 +9,13 @@ import Myadd from "../pages/Myadd";
 import Edit from "../pages/Edit";
 import Tutordtl from "../pages/Tutordtl";
 import Booked from "../pages/Booked";
+import ErrorPage from "../pages/ErrorPage";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     Component: Root,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: '/',
