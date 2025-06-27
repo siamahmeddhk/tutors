@@ -1,259 +1,3 @@
-// import React, { useContext, useEffect, useState } from 'react';
-// import { Authcontext } from '../Auth/Authcontext';
-// import Swal from 'sweetalert2';
-
-// const Booked = () => {
-//   const { user } = useContext(Authcontext);
-//   const [booked, setBooked] = useState([]);
-//   const [loading, setLoading] = useState(true);
-
-//   useEffect(() => {
-//     if (!user?.email) return;
-
-//     console.log("Fetching bookings for:", user.email);
-
-//     fetch(`https://tutor-s.vercel.app/booking/${user.email}`)
-//       .then((res) => {
-//         if (!res.ok) {
-//           console.error("Server responded with status:", res.status);
-//           throw new Error('Failed to fetch');
-//         }
-//         return res.json();
-//       })
-//       .then((data) => {
-//         setBooked(data);
-//         setLoading(false);
-//       })
-//       .catch((error) => {
-//         console.error('Error fetching bookings:', error);
-//         setLoading(false);
-//         Swal.fire({
-//           icon: 'error',
-//           title: 'Oops...',
-//           text: 'Failed to load bookings.',
-//         });
-//       });
-//   }, [user?.email]);
-
-//   const handleRemove = (id) => {
-//     Swal.fire({
-//       title: 'Are you sure?',
-//       text: 'This booking will be permanently removed!',
-//       icon: 'warning',
-//       showCancelButton: true,
-//       confirmButtonColor: '#d33',
-//       cancelButtonColor: '#3085d6',
-//       confirmButtonText: 'Yes, delete it!',
-//     }).then((result) => {
-//       if (result.isConfirmed) {
-//         fetch(`https://tutor-s.vercel.app/booking/${id}`, {
-//           method: 'DELETE',
-//         })
-//           .then((res) => {
-//             if (!res.ok) throw new Error('Delete failed');
-//             return res.json();
-//           })
-//           .then(() => {
-//             setBooked((prev) => prev.filter((item) => item._id !== id));
-//             Swal.fire('Deleted!', 'Your booking has been removed.', 'success');
-//           })
-//           .catch((error) => {
-//             console.error('Delete error:', error);
-//             Swal.fire('Error', 'Something went wrong.', 'error');
-//           });
-//       }
-//     });
-//   };
-
-//   if (loading) {
-//     return (
-//       <div className="flex justify-center items-center min-h-screen">
-//         <span className="text-gray-500">Loading bookings...</span>
-//       </div>
-//     );
-//   }
-
-//   return (
-//     <div className="max-w-5xl mx-auto px-4 py-10">
-//       <h2 className="text-2xl font-bold mb-6 text-center">My Booked Tutors</h2>
-
-//       {booked.length === 0 ? (
-//         <p className="text-center text-gray-600">You haven’t booked any tutor yet.</p>
-//       ) : (
-//         <div className="grid md:grid-cols-2 gap-6">
-//           {booked.map((item) => (
-//             <div key={item._id} className="bg-white dark:bg-gray-800 rounded-lg shadow p-5">
-//               <img
-//                 src={item.tutorImage}
-//                 alt={item.tutorName}
-//                 className="w-full h-48 object-cover rounded-md mb-4"
-//               />
-//               <h3 className="text-xl font-semibold text-gray-800 dark:text-white">{item.tutorName}</h3>
-//               <p className="text-gray-600 dark:text-gray-300">Price: ${item.price}</p>
-//               <p className="text-sm text-gray-500 mt-2 dark:text-gray-400">
-//                 Booked on: {item.bookingTime ? new Date(item.bookingTime).toLocaleString() : 'N/A'}
-//               </p>
-//               <button
-//                 onClick={() => handleRemove(item._id)}
-//                 className="mt-4 bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition-all"
-//               >
-//                 Remove Booking
-//               </button>
-//             </div>
-//           ))}
-//         </div>
-//       )}
-//     </div>
-//   );
-// };
-
-// export default Booked;
-
-
-
-
-
-
-// import React, { useContext, useEffect, useState } from 'react';
-// import { Authcontext } from '../Auth/Authcontext';
-// import Swal from 'sweetalert2';
-
-// const Booked = () => {
-//   const { user } = useContext(Authcontext);
-//   const [booked, setBooked] = useState([]);
-//   const [loading, setLoading] = useState(true);
-
-//   useEffect(() => {
-//     if (!user?.email) return;
-
-//     fetch(`https://tutor-s.vercel.app/booking/${user.email}`)
-//       .then((res) => {
-//         if (!res.ok) throw new Error('Failed to fetch');
-//         return res.json();
-//       })
-//       .then((data) => {
-//         setBooked(data);
-//         setLoading(false);
-//       })
-//       .catch((error) => {
-//         console.error('Error fetching bookings:', error);
-//         setLoading(false);
-//         Swal.fire({
-//           icon: 'error',
-//           title: 'Oops...',
-//           text: 'Failed to load bookings.',
-//         });
-//       });
-//   }, [user?.email]);
-
-//   const handleRemove = (id) => {
-//     Swal.fire({
-//       title: 'Are you sure?',
-//       text: 'This booking will be permanently removed!',
-//       icon: 'warning',
-//       showCancelButton: true,
-//       confirmButtonColor: '#d33',
-//       cancelButtonColor: '#3085d6',
-//       confirmButtonText: 'Yes, delete it!',
-//     }).then((result) => {
-//       if (result.isConfirmed) {
-//         fetch(`https://tutor-s.vercel.app/booking/${id}`, {
-//           method: 'DELETE',
-//         })
-//           .then((res) => {
-//             if (!res.ok) throw new Error('Delete failed');
-//             return res.json();
-//           })
-//           .then(() => {
-//             setBooked((prev) => prev.filter((item) => item._id !== id));
-//             Swal.fire('Deleted!', 'Your booking has been removed.', 'success');
-//           })
-//           .catch((error) => {
-//             console.error('Delete error:', error);
-//             Swal.fire('Error', 'Something went wrong.', 'error');
-//           });
-//       }
-//     });
-//   };
-
-//   const handleReview = (courseId) => {
-//     if (!courseId) {
-//       return Swal.fire('Error', 'Tutor ID is missing in booking.', 'error');
-//     }
-
-//     fetch(`https://tutor-s.vercel.app/tutors/review/${courseId}`, {
-//       method: 'PATCH',
-//     })
-//       .then((res) => {
-//         if (!res.ok) throw new Error('Review update failed');
-//         return res.json();
-//       })
-//       .then(() => {
-//         Swal.fire('Thank you!', 'Your review has been submitted.', 'success');
-//       })
-//       .catch((error) => {
-//         console.error('Review error:', error);
-//         Swal.fire('Error', 'Failed to submit review.', 'error');
-//       });
-//   };
-
-//   if (loading) {
-//     return (
-//       <div className="flex justify-center items-center min-h-screen">
-//         <span className="text-gray-500">Loading bookings...</span>
-//       </div>
-//     );
-//   }
-
-//   return (
-//     <div className="max-w-5xl mx-auto px-4 py-10">
-//       <h2 className="text-2xl font-bold mb-6 text-center">My Booked Tutors</h2>
-
-//       {booked.length === 0 ? (
-//         <p className="text-center text-gray-600">You haven’t booked any tutor yet.</p>
-//       ) : (
-//         <div className="grid md:grid-cols-2 gap-6">
-//           {booked.map((item) => (
-//             <div key={item._id} className="bg-white dark:bg-gray-800 rounded-lg shadow p-5">
-//               <img
-//                 src={item.tutorImage}
-//                 alt={item.tutorName}
-//                 className="w-full h-48 object-cover rounded-md mb-4"
-//               />
-//               <h3 className="text-xl font-semibold text-gray-800 dark:text-white">{item.tutorName}</h3>
-//               <p className="text-gray-600 dark:text-gray-300">Language: {item.language}</p>
-//               <p className="text-gray-600 dark:text-gray-300">Price: ${item.price}</p>
-//               <p className="text-sm text-gray-500 mt-2 dark:text-gray-400">
-//                 Booked on: {item.bookingTime ? new Date(item.bookingTime).toLocaleString() : 'N/A'}
-//               </p>
-
-//               <div className="mt-4 flex gap-2">
-//                 <button
-//                   onClick={() => handleRemove(item._id)}
-//                   className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition-all"
-//                 >
-//                   Remove Booking
-//                 </button>
-
-//                 <button
-//                   onClick={() => handleReview(item.courseId)}
-//                   className="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 transition-all"
-//                 >
-//                   Review
-//                 </button>
-//               </div>
-//             </div>
-//           ))}
-//         </div>
-//       )}
-//     </div>
-//   );
-// };
-
-// export default Booked;
-
-
-
 import React, { useContext, useEffect, useState } from 'react';
 import { Authcontext } from '../Auth/Authcontext';
 import Swal from 'sweetalert2';
@@ -265,7 +9,7 @@ const Booked = () => {
 
   useEffect(() => {
     const fetchBookings = async () => {
-      if (!user?.email) return;
+      if (!user?.email) return setLoading(false);
 
       try {
         const token = await user.getIdToken(); // ✅ Get Firebase ID token
@@ -353,10 +97,31 @@ const Booked = () => {
     }
   };
 
+  // ⭐ Beautiful Loading Spinner
   if (loading) {
     return (
-      <div className="flex justify-center items-center min-h-screen">
-        <span className="text-gray-500">Loading bookings...</span>
+      <div className="flex flex-col items-center justify-center py-20 text-blue-600 min-h-screen">
+        <svg
+          className="animate-spin h-10 w-10 mb-4 text-blue-600"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <circle
+            className="opacity-25"
+            cx="12"
+            cy="12"
+            r="10"
+            stroke="currentColor"
+            strokeWidth="4"
+          ></circle>
+          <path
+            className="opacity-75"
+            fill="currentColor"
+            d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+          ></path>
+        </svg>
+        <p className="text-lg font-medium">Loading bookings...</p>
       </div>
     );
   }
@@ -407,3 +172,5 @@ const Booked = () => {
 };
 
 export default Booked;
+
+

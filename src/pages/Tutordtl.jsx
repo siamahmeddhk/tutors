@@ -7,9 +7,9 @@ const Tutordtl = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [tutor, setTutor] = useState(null);
+  const [loading, setLoading] = useState(true);
   const { user } = useContext(Authcontext);
 
-  // ✅ Booking Handler
   const handelbook = () => {
     if (!user?.email) {
       Swal.fire({
@@ -24,16 +24,19 @@ const Tutordtl = () => {
       tutorId: id,
       tutorName: tutor.name,
       tutorImage: tutor.image,
+      language: tutor.language,
       price: tutor.price,
-      userEmail: user.email,
+      tutorEmail: tutor.email || tutor.tutorEmail || "",
+      email: user.email,
       bookingTime: new Date().toISOString(),
-      courseId: tutor._id
+      courseId: tutor._id,
     };
 
     fetch("https://tutor-s.vercel.app/booking", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        // Add Authorization header here if your backend requires it
       },
       body: JSON.stringify(bookingData),
     })
@@ -72,16 +75,47 @@ const Tutordtl = () => {
       .then((data) => {
         const found = data.find((t) => t._id === id);
         setTutor(found);
+        setLoading(false);
       })
       .catch((err) => {
         console.error("Error fetching tutor:", err);
+        setLoading(false);
       });
   }, [id]);
 
+  // Beautiful Loading Spinner
+  if (loading) {
+    return (
+      <div className="flex flex-col items-center justify-center py-20 text-blue-600">
+        <svg
+          className="animate-spin h-10 w-10 mb-4 text-blue-600"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <circle
+            className="opacity-25"
+            cx="12"
+            cy="12"
+            r="10"
+            stroke="currentColor"
+            strokeWidth="4"
+          ></circle>
+          <path
+            className="opacity-75"
+            fill="currentColor"
+            d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+          ></path>
+        </svg>
+        <p className="text-lg font-medium">Loading tutor details...</p>
+      </div>
+    );
+  }
+
   if (!tutor) {
     return (
-      <div className="flex justify-center items-center min-h-screen text-gray-600 dark:text-gray-300">
-        Loading tutor details...
+      <div className="text-center text-gray-500 py-10">
+        <p>Tutor not found.</p>
       </div>
     );
   }
@@ -109,12 +143,13 @@ const Tutordtl = () => {
             </p>
             {price && (
               <p className="text-gray-600 dark:text-gray-300 mb-4">
-                <span className="font-medium">Price:</span> ${price}
+                <span className="font-medium">Price:</span> {price}
               </p>
             )}
             <p className="text-gray-700 dark:text-gray-400 leading-relaxed">
               {description}
             </p>
+          
           </div>
 
           <div className="mt-6 flex flex-wrap gap-4">
