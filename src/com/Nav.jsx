@@ -66,9 +66,7 @@ export default function Nav() {
           </button>
 
           <Link to="/" className="text-2xl font-extrabold flex items-center gap-1 text-blue-600 dark:text-white">
-            📚
-         
-            TutorsTalk
+            📚 TutorsTalk
           </Link>
         </div>
 
@@ -76,9 +74,16 @@ export default function Nav() {
         <nav className="hidden lg:flex gap-6 items-center">
           <NavLink to="/" className={navLinkClass}>Home</NavLink>
           <NavLink to="/find-tutor" className={navLinkClass}>Find Tutors</NavLink>
-          <NavLink to="/add" className={navLinkClass}>Add Tutorials</NavLink>
-          <button onClick={() => handleProtectedClick('/my-added')} className="text-gray-700 dark:text-gray-200 hover:text-blue-600 transition">My Tutorials</button>
-          <button onClick={() => handleProtectedClick('/booked')} className="text-gray-700 dark:text-gray-200 hover:text-blue-600 transition">Booked Tutors</button>
+          {/* Modified to Private Button */}
+          <button onClick={() => handleProtectedClick('/add')} className="text-gray-700 dark:text-gray-200 hover:text-blue-600 transition">
+            Add Tutorials
+          </button>
+          <button onClick={() => handleProtectedClick('/my-added')} className="text-gray-700 dark:text-gray-200 hover:text-blue-600 transition">
+            My Tutorials
+          </button>
+          <button onClick={() => handleProtectedClick('/booked')} className="text-gray-700 dark:text-gray-200 hover:text-blue-600 transition">
+            Booked Tutors
+          </button>
         </nav>
 
         {/* Right side controls */}
@@ -130,9 +135,16 @@ export default function Nav() {
         <div className="lg:hidden bg-white dark:bg-gray-900 border-t dark:border-gray-700 shadow-md px-6 py-4 space-y-3 flex flex-col">
           <NavLink to="/" className={navLinkClass} onClick={() => setMobileMenuOpen(false)}>Home</NavLink>
           <NavLink to="/find-tutor" className={navLinkClass} onClick={() => setMobileMenuOpen(false)}>Find Tutors</NavLink>
-          <NavLink to="/add" className={navLinkClass} onClick={() => setMobileMenuOpen(false)}>Add Tutorials</NavLink>
-          <button onClick={() => handleProtectedClick('/my-added')} className="text-left text-gray-700 dark:text-white hover:text-blue-600">My Tutorials</button>
-          <button onClick={() => handleProtectedClick('/booked')} className="text-left text-gray-700 dark:text-white hover:text-blue-600">Booked Tutors</button>
+          {/* Modified to Private Button */}
+          <button onClick={() => handleProtectedClick('/add')} className="text-left text-gray-700 dark:text-white hover:text-blue-600">
+            Add Tutorials
+          </button>
+          <button onClick={() => handleProtectedClick('/my-added')} className="text-left text-gray-700 dark:text-white hover:text-blue-600">
+            My Tutorials
+          </button>
+          <button onClick={() => handleProtectedClick('/booked')} className="text-left text-gray-700 dark:text-white hover:text-blue-600">
+            Booked Tutors
+          </button>
           {!user && (
             <Link
               to="/signup"
