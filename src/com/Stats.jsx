@@ -14,7 +14,7 @@ const Stats = () => {
   }, []);
 
   useEffect(() => {
-    // Fetch Firebase users
+   
     fetch("https://tutor-s.vercel.app/user")
       .then(res => res.json())
       .then(data => {
