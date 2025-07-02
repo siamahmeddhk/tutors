@@ -20,6 +20,7 @@ const Add = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     const tutorialData = {
       name: user.displayName,
       email: user.email,
@@ -31,10 +32,14 @@ const Add = () => {
     };
 
     try {
+      // 🔐 Get Firebase ID token from user
+      const token = await user.getIdToken();
+
       const res = await fetch('https://tutor-s.vercel.app/tutors', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}` // ✅ Add token for backend auth
         },
         body: JSON.stringify(tutorialData)
       });
@@ -50,6 +55,8 @@ const Add = () => {
           confirmButtonColor: '#6366f1'
         });
         setFormData({ image: '', language: '', price: '', description: '' });
+      } else {
+        throw new Error('Tutorial creation failed');
       }
     } catch (error) {
       console.error('Error submitting tutorial:', error);
@@ -79,7 +86,7 @@ const Add = () => {
             <label className="block text-sm font-medium text-gray-300 mb-1">User Name</label>
             <input 
               type="text" 
-              value={user?.displayName} 
+              value={user?.displayName || ''} 
               disabled 
               className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500" 
             />
@@ -88,7 +95,7 @@ const Add = () => {
             <label className="block text-sm font-medium text-gray-300 mb-1">Email</label>
             <input 
               type="email" 
-              value={user?.email} 
+              value={user?.email || ''} 
               disabled 
               className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500" 
             />
