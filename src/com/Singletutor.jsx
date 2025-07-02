@@ -1,9 +1,20 @@
-import React from 'react';
-import { Link } from 'react-router';
+import React, { useContext } from 'react';
+import { Link, useNavigate } from 'react-router';
+import { Authcontext } from '../Auth/Authcontext';
+
 
 const Singletutor = ({ tea }) => {
   const { _id, name, image, language, review, description } = tea;
+  const { user } = useContext(Authcontext);
+  const navigate = useNavigate();
 
+  const handleDetailsClick = (e) => {
+    if (!user) {
+      e.preventDefault();
+      navigate('/signup');
+    }
+    // If user exists, the Link will handle navigation normally
+  };
 
   return (
     <div className="bg-white shadow-lg rounded-2xl overflow-hidden p-6 flex flex-col justify-between gap-4 hover:shadow-xl transition-all duration-300 dark:bg-gray-800">
@@ -25,7 +36,8 @@ const Singletutor = ({ tea }) => {
         </p>
       </div>
       <Link
-        to={`/tutordtl/${_id}`}
+        to={user ? `/tutordtl/${_id}` : '#'}
+        onClick={handleDetailsClick}
         className="mt-2 block w-full text-center bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-all duration-300 sm:w-auto"
       >
         Details

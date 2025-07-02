@@ -1,165 +1,7 @@
-// import React, { useContext, useEffect, useState } from 'react';
-// import { Authcontext } from '../Auth/Authcontext';
-// import Swal from 'sweetalert2';
-// import { Link } from 'react-router';
-
-// const Myadd = () => {
-//   const { user } = useContext(Authcontext);
-//   const [loading, setLoading] = useState(true);
-//   const [tutors, setTutors] = useState([]);
-
-//   useEffect(() => {
-//     if (user?.email) {
-//       fetch(`https://tutor-s.vercel.app/myadded/${user.email}`)
-//         .then(res => res.json())
-//         .then(data => {
-//           setTutors(data);
-//           setLoading(false);
-//         })
-//         .catch(error => {
-//           console.error('Error fetching tutors:', error);
-//           setLoading(false);
-//         });
-//     }
-//   }, [user]);
-
-//   const handleDelete = (id) => {
-//     Swal.fire({
-//       title: 'Are you sure?',
-//       text: "You won't be able to revert this!",
-//       icon: 'warning',
-//       showCancelButton: true,
-//       confirmButtonColor: '#6366f1',
-//       cancelButtonColor: '#ef4444',
-//       confirmButtonText: 'Yes, delete it!'
-//     }).then((result) => {
-//       if (result.isConfirmed) {
-//         fetch(`https://tutor-s.vercel.app/tutors/${id}`, {
-//           method: 'DELETE'
-//         })
-//         .then(res => res.json())
-//         .then(() => {
-//           setTutors(tutors.filter(tutor => tutor._id !== id));
-//           Swal.fire(
-//             'Deleted!',
-//             'Your tutor has been deleted.',
-//             'success'
-//           );
-//         })
-//         .catch(error => {
-//           console.error('Error deleting tutor:', error);
-//           Swal.fire(
-//             'Error!',
-//             'Failed to delete tutor.',
-//             'error'
-//           );
-//         });
-//       }
-//     });
-//   };
-
-//   if (loading) {
-//     return (
-//       <div className="flex justify-center items-center h-64">
-//         <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-indigo-500"></div>
-//       </div>
-//     );
-//   }
-
-//   return (
-//     <div className="container mx-auto px-4 py-8">
-//       <div className="flex justify-between items-center mb-8">
-//         <h2 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-purple-600">
-//           My Added Tutors
-//         </h2>
-//         {tutors.length > 0 && (
-//           <span className="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded">
-//             Total: {tutors.length}
-//           </span>
-//         )}
-//       </div>
-
-//       {tutors.length === 0 ? (
-//         <div className="text-center py-12">
-//           <div className="mx-auto w-24 h-24 text-gray-400 mb-4">
-//             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-//               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-//             </svg>
-//           </div>
-//           <h3 className="text-lg font-medium text-gray-600">No tutors added yet</h3>
-//           <p className="text-gray-500 mt-1">Start by adding your first tutor</p>
-//           <Link to="/add" className="mt-4 inline-flex items-center px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition">
-//             Add Tutor
-//           </Link>
-//         </div>
-//       ) : (
-//         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-//           {tutors.map((tutor) => (
-//             <div key={tutor._id} className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200 hover:shadow-lg transition-shadow">
-//               <div className="h-48 overflow-hidden">
-//                 <img 
-//                   src={tutor.image || 'https://via.placeholder.com/400x300?text=Tutor+Image'} 
-//                   alt={tutor.language} 
-//                   className="w-full h-full object-cover"
-//                 />
-//               </div>
-//               <div className="p-5">
-//                 <div className="flex justify-between items-start mb-2">
-//                   <h3 className="text-xl font-bold text-gray-800">{tutor.language || 'No language specified'}</h3>
-//                   <span className="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">
-//                     ${tutor.price || '0'}
-//                   </span>
-//                 </div>
-                
-//                 <p className="text-gray-600 mb-4 line-clamp-3">{tutor.description || 'No description provided'}</p>
-                
-//                 <div className="flex items-center text-sm text-gray-500 mb-4">
-//                   <span className="flex items-center mr-3">
-//                     <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
-//                       <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-//                     </svg>
-//                     {tutor.review || '0'} reviews
-//                   </span>
-//                   <span className="flex items-center">
-//                     <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
-//                       <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
-//                       <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
-//                     </svg>
-//                     {tutor.email}
-//                   </span>
-//                 </div>
-
-//                 <div className="flex space-x-2">
-//                   <Link 
-//                     to={`/edit/${tutor._id}`}
-//                     className="flex-1 text-center px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition"
-//                   >
-//                     Edit
-//                   </Link>
-//                   <button
-//                     onClick={() => handleDelete(tutor._id)}
-//                     className="flex-1 px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition"
-//                   >
-//                     Delete
-//                   </button>
-//                 </div>
-//               </div>
-//             </div>
-//           ))}
-//         </div>
-//       )}
-//     </div>
-//   );
-// };
-
-// export default Myadd;
-
-
-
 import React, { useContext, useEffect, useState } from 'react';
 import { Authcontext } from '../Auth/Authcontext';
 import Swal from 'sweetalert2';
-import { Link } from 'react-router'; // ✅ Fixed import
+import { Link } from 'react-router';
 import { getAuth } from 'firebase/auth';
 
 const Myadd = () => {
@@ -169,65 +11,38 @@ const Myadd = () => {
 
   useEffect(() => {
     const fetchMyTutors = async () => {
-      if (!user?.email) {
-        setLoading(false);
-        return;
-      }
-
+      if (!user?.email) return setLoading(false);
       try {
         const auth = getAuth();
         const currentUser = auth.currentUser;
-        if (!currentUser) {
-          console.error('No Firebase user logged in');
-          setLoading(false);
-          return;
-        }
-
-        const idToken = await currentUser.getIdToken(true);
-
+        if (!currentUser) return setLoading(false);
+        const token = await currentUser.getIdToken(true);
         const res = await fetch(`https://tutor-s.vercel.app/myadded/${user.email}`, {
           headers: {
-            'Authorization': `Bearer ${idToken}`,
-            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
           },
         });
-
-        if (!res.ok) {
-          const errorData = await res.json();
-          console.error('Error response from backend:', errorData);
-          Swal.fire('Error', errorData.error || 'Failed to fetch tutors', 'error');
-          setTutors([]);
-          setLoading(false);
-          return;
-        }
-
         const data = await res.json();
-        if (Array.isArray(data)) {
-          setTutors(data);
-        } else {
-          console.error('Expected array but got:', data);
-          setTutors([]);
-        }
-      } catch (error) {
-        console.error('Fetch error:', error);
-        Swal.fire('Error', 'Failed to fetch tutors', 'error');
-        setTutors([]);
+        if (Array.isArray(data)) setTutors(data);
+        else setTutors([]);
+      } catch (err) {
+        console.error(err);
+        Swal.fire('Error', 'Failed to fetch tutors.', 'error');
       } finally {
         setLoading(false);
       }
     };
-
     fetchMyTutors();
   }, [user]);
 
   const handleDelete = (id) => {
     Swal.fire({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
+      title: 'Delete this tutorial?',
+      text: 'This action cannot be undone!',
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: '#6366f1',
-      cancelButtonColor: '#ef4444',
+      confirmButtonColor: '#e11d48',
+      cancelButtonColor: '#6b7280',
       confirmButtonText: 'Yes, delete it!',
     }).then((result) => {
       if (result.isConfirmed) {
@@ -236,154 +51,87 @@ const Myadd = () => {
         })
           .then((res) => res.json())
           .then(() => {
-            setTutors((prev) => prev.filter((tutor) => tutor._id !== id));
-            Swal.fire('Deleted!', 'Your tutor has been deleted.', 'success');
+            setTutors((prev) => prev.filter((t) => t._id !== id));
+            Swal.fire('Deleted!', 'Your tutorial has been deleted.', 'success');
           })
-          .catch((error) => {
-            console.error('Error deleting tutor:', error);
-            Swal.fire('Error!', 'Failed to delete tutor.', 'error');
-          });
+          .catch(() =>
+            Swal.fire('Error', 'Failed to delete the tutorial.', 'error')
+          );
       }
     });
   };
 
-  // ✅ Updated Beautiful Loading Spinner
   if (loading) {
     return (
-      <div className="flex flex-col items-center justify-center py-20 text-blue-600">
-        <svg
-          className="animate-spin h-10 w-10 mb-4 text-blue-600"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-        >
-          <circle
-            className="opacity-25"
-            cx="12"
-            cy="12"
-            r="10"
-            stroke="currentColor"
-            strokeWidth="4"
-          ></circle>
-          <path
-            className="opacity-75"
-            fill="currentColor"
-            d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
-          ></path>
-        </svg>
-        <p className="text-lg font-medium">Loading your added tutors...</p>
+      <div className="flex justify-center items-center min-h-[60vh]">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600"></div>
       </div>
     );
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <div className="flex justify-between items-center mb-8">
-        <h2 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-purple-600">
-          My Added Tutors
-        </h2>
-        {tutors.length > 0 && (
-          <span className="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded">
-            Total: {tutors.length}
-          </span>
-        )}
-      </div>
+    <div className="max-w-7xl mx-auto px-4 py-8">
+      <h2 className="text-3xl font-bold text-center mb-8 text-indigo-700">
+        My Tutorials
+      </h2>
 
-      {(!Array.isArray(tutors) || tutors.length === 0) ? (
-        <div className="text-center py-12">
-          <div className="mx-auto w-24 h-24 text-gray-400 mb-4">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={1.5}
-                d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
-              />
-            </svg>
-          </div>
-          <h3 className="text-lg font-medium text-gray-600">No tutors added yet</h3>
-          <p className="text-gray-500 mt-1">Start by adding your first tutor</p>
+      {tutors.length === 0 ? (
+        <div className="text-center text-gray-600 mt-16">
+          <p className="mb-4 text-xl">You haven't added any tutorials yet.</p>
           <Link
             to="/add"
-            className="mt-4 inline-flex items-center px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition"
+            className="inline-block px-6 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700"
           >
-            Add Tutor
+            Add Your First Tutorial
           </Link>
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {tutors.map((tutor) => (
-            <div
-              key={tutor._id}
-              className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200 hover:shadow-lg transition-shadow"
-            >
-              <div className="h-48 overflow-hidden">
-                <img
-                  src={tutor.image || 'https://via.placeholder.com/400x300?text=Tutor+Image'}
-                  alt={tutor.language}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="p-5">
-                <div className="flex justify-between items-start mb-2">
-                  <h3 className="text-xl font-bold text-gray-800">
-                    {tutor.language || 'No language specified'}
-                  </h3>
-                  <span className="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">
-                    ${tutor.price || '0'}
-                  </span>
-                </div>
-
-                <p className="text-gray-600 mb-4 line-clamp-3">
-                  {tutor.description || 'No description provided'}
-                </p>
-
-                <div className="flex items-center text-sm text-gray-500 mb-4">
-                  <span className="flex items-center mr-3">
-                    <svg
-                      className="w-4 h-4 mr-1"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
+        <div className="overflow-x-auto rounded-lg shadow">
+          <table className="min-w-full divide-y divide-gray-200 bg-white">
+            <thead className="bg-indigo-600 text-white">
+              <tr>
+                <th className="px-4 py-3 text-left text-sm font-semibold">Image</th>
+                <th className="px-4 py-3 text-left text-sm font-semibold">Language</th>
+                <th className="px-4 py-3 text-left text-sm font-semibold">Price</th>
+                <th className="px-4 py-3 text-left text-sm font-semibold">Description</th>
+                <th className="px-4 py-3 text-left text-sm font-semibold">Review</th>
+                <th className="px-4 py-3 text-left text-sm font-semibold">Actions</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-gray-100 text-gray-700">
+              {tutors.map((tutor) => (
+                <tr key={tutor._id} className="hover:bg-gray-50">
+                  <td className="px-4 py-3">
+                    <img
+                      src={tutor.image || 'https://via.placeholder.com/80'}
+                      alt={tutor.language}
+                      className="w-16 h-16 object-cover rounded shadow border"
+                    />
+                  </td>
+                  <td className="px-4 py-3 font-medium">{tutor.language}</td>
+                  <td className="px-4 py-3 font-semibold text-green-600">
+                    ${tutor.price}
+                  </td>
+                  <td className="px-4 py-3 max-w-xs truncate">{tutor.description}</td>
+                  <td className="px-4 py-3">{tutor.review || 0}</td>
+                  <td className="px-4 py-3 space-x-2">
+                    <Link
+                      to={`/edit/${tutor._id}`}
+                      className="inline-block px-3 py-1 text-sm bg-blue-600 text-white rounded hover:bg-blue-700"
                     >
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
-                    {tutor.review || '0'} reviews
-                  </span>
-                  <span className="flex items-center">
-                    <svg
-                      className="w-4 h-4 mr-1"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
+                      Update
+                    </Link>
+                    <button
+                      onClick={() => handleDelete(tutor._id)}
+                      className="inline-block px-3 py-1 text-sm bg-red-600 text-white rounded hover:bg-red-700"
                     >
-                      <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
-                      <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
-                    </svg>
-                    {tutor.email}
-                  </span>
-                </div>
-
-                <div className="flex space-x-2">
-                  <Link
-                    to={`/edit/${tutor._id}`}
-                    className="flex-1 text-center px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition"
-                  >
-                    Edit
-                  </Link>
-                  <button
-                    onClick={() => handleDelete(tutor._id)}
-                    className="flex-1 px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition"
-                  >
-                    Delete
-                  </button>
-                </div>
-              </div>
-            </div>
-          ))}
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       )}
     </div>

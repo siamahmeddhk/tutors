@@ -118,7 +118,7 @@ const Add = () => {
               onChange={handleChange}
               required
               className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-              placeholder="e.g. JavaScript"
+              placeholder="e.g. English"
             />
           </div>
           <div>
