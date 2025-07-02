@@ -1,12 +1,77 @@
-# React + Vite
+# 🌐 Language Exchange - Online Tutor Booking Platform (Client)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to the **frontend** of the **Language Exchange** project — a modern online tutor booking platform that helps learners easily find, book, and review tutors based on different languages. It promotes global language learning in a friendly atmosphere through a user-centric, responsive, and accessible interface.
 
-Currently, two official plugins are available:
+## 🚀 Live Site
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+🔗 [Visit Live Website]( https://tutoriam.netlify.app/ )
 
-## Expanding the ESLint configuration
+> _Note: Replace the above link with your actual Netlify or Vercel deployed client URL._
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🎯 Project Purpose
+
+This platform simplifies the process of connecting tutors and students. Inspired by platforms like **Preply** and **Italki**, it enables:
+- Seamless tutor discovery by language
+- Booking tutors securely
+- Submitting and viewing reviews
+- Managing personal tutorials
+
+---
+
+## 📌 Key Features
+
+✅ Firebase Authentication  
+✅ JWT-based Private Routes  
+✅ Google & Email/Password Login  
+✅ Add / Update / Delete Tutorials  
+✅ Book Tutors with Review Capability  
+✅ Tutor Search by Language  
+✅ Fully Responsive UI (Mobile, Tablet, Desktop)  
+✅ Dark / Light Theme Toggle  
+✅ Protected Routes with Role-Based Access  
+✅ Clean & Eye-Friendly UI  
+
+
+
+---
+
+## 📊 Stats Section
+
+- Total Tutors
+- Total Reviews
+- Unique Languages
+
+
+
+---
+
+## 🔐 Authentication & Security
+
+- Firebase Auth for login/signup
+- Token sent with each protected route request
+- Firebase keys and MongoDB credentials secured via `.env`
+
+---
+
+## 🌈 Theme Support
+
+Light / Dark mode toggle included in Navbar  
+
+
+---
+
+## 📦 NPM Packages Used
+
+| Package                | Purpose |
+|------------------------|---------|
+| `firebase`             | Authentication |
+| `react-router`     | Routing |
+| `sweetalert2`          | Popups & alerts |
+| `daisyui`              | Tailwind component library |
+| `tailwindcss`          | Styling |
+| `react-icons`          | Icon library |
+
+
+
