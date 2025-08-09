@@ -6,7 +6,7 @@ Welcome to the **frontend** of the **Language Exchange** project — a modern on
 
 🔗 [Visit Live Website]( https://tutoriam.netlify.app/ )
 
-> _Note: Replace the above link with your actual Netlify or Vercel deployed client URL._
+
 
 ---
 
