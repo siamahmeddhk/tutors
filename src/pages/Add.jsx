@@ -22,8 +22,8 @@ const Add = () => {
     e.preventDefault();
 
     const tutorialData = {
-      name: user.displayName,
-      email: user.email,
+      name: user?.displayName || 'Anonymous',
+      email: user?.email || 'unknown@example.com',
       image: formData.image,
       language: formData.language,
       price: parseFloat(formData.price),
@@ -32,20 +32,18 @@ const Add = () => {
     };
 
     try {
-      // 🔐 Get Firebase ID token from user
-      const token = await user.getIdToken();
+      console.log('📤 Sending tutorial data:', JSON.stringify(tutorialData, null, 2));
 
       const res = await fetch('https://tutor-s.vercel.app/tutors', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}` // ✅ Add token for backend auth
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify(tutorialData)
       });
 
       const result = await res.json();
-      if (result.insertedId || res.ok) {
+      if (res.ok && result.insertedId) {
         Swal.fire({
           title: 'Success!',
           text: 'Tutorial added successfully!',
@@ -56,13 +54,13 @@ const Add = () => {
         });
         setFormData({ image: '', language: '', price: '', description: '' });
       } else {
-        throw new Error('Tutorial creation failed');
+        throw new Error(result.error || 'Failed to add tutorial');
       }
     } catch (error) {
-      console.error('Error submitting tutorial:', error);
+      console.error('❌ Error submitting tutorial:', error.message, error.stack);
       Swal.fire({
         title: 'Error!',
-        text: 'Failed to add tutorial',
+        text: error.message || 'Failed to add tutorial. Please try again.',
         icon: 'error',
         background: '#1f2937',
         color: '#f3f4f6',
@@ -88,7 +86,7 @@ const Add = () => {
               type="text" 
               value={user?.displayName || ''} 
               disabled 
-              className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500" 
+              className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-gray-200" 
             />
           </div>
           <div>
@@ -97,7 +95,7 @@ const Add = () => {
               type="email" 
               value={user?.email || ''} 
               disabled 
-              className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500" 
+              className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-gray-200" 
             />
           </div>
         </div>
@@ -110,7 +108,7 @@ const Add = () => {
             value={formData.image}
             onChange={handleChange}
             required
-            className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-gray-200"
             placeholder="https://example.com/image.jpg"
           />
         </div>
@@ -124,7 +122,7 @@ const Add = () => {
               value={formData.language}
               onChange={handleChange}
               required
-              className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-gray-200"
               placeholder="e.g. English"
             />
           </div>
@@ -136,7 +134,7 @@ const Add = () => {
               value={formData.price}
               onChange={handleChange}
               required
-              className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-gray-200"
               placeholder="0.00"
               min="0"
               step="0.01"
@@ -152,14 +150,14 @@ const Add = () => {
             onChange={handleChange}
             required
             rows="5"
-            className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-gray-200"
             placeholder="Write a detailed tutorial description..."
           />
         </div>
 
         <button 
           type="submit" 
-          className="w-full py-3 px-4 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-medium rounded-lg shadow-md transition-all duration-300 transform hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-900"
+          className="w-full py-3 px-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-medium rounded-lg shadow-md hover:from-indigo-700 hover:to-purple-700 transition"
         >
           Submit Tutorial
         </button>

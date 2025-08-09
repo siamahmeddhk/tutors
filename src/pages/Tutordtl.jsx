@@ -10,64 +10,66 @@ const Tutordtl = () => {
   const [loading, setLoading] = useState(true);
   const { user } = useContext(Authcontext);
 
-  const handelbook = () => {
-    if (!user?.email) {
-      Swal.fire({
-        icon: "warning",
-        title: "Login Required",
-        text: "Please log in to book a tutor!",
-      });
-      return;
-    }
+  const handelbook = async () => {
+  if (!user?.email) {
+    Swal.fire({
+      icon: "warning",
+      title: "Login Required",
+      text: "Please log in to book a tutor!",
+    });
+    return;
+  }
 
-    const bookingData = {
-      tutorId: id,
-      tutorName: tutor.name,
-      tutorImage: tutor.image,
-      language: tutor.language,
-      price: tutor.price,
-      tutorEmail: tutor.email || tutor.tutorEmail || "",
-      email: user.email,
-      bookingTime: new Date().toISOString(),
-      courseId: tutor._id,
-    };
+  const bookingData = {
+    tutorId: id,
+    tutorName: tutor.name,
+    tutorImage: tutor.image,
+    language: tutor.language,
+    price: tutor.price,
+    tutorEmail: tutor.email || "",
+    bookingTime: new Date().toISOString(),
+    courseId: tutor._id,
+  };
 
-    fetch("https://tutor-s.vercel.app/booking", {
+  try {
+    const token = await user.getIdToken(); // ✅ Get Firebase token
+    const response = await fetch("https://tutor-s.vercel.app/booking", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        // Add Authorization header here if your backend requires it
+        Authorization: `Bearer ${token}`, // ✅ Send auth token
       },
       body: JSON.stringify(bookingData),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.insertedId) {
-          Swal.fire({
-            icon: "success",
-            title: "Booking Successful!",
-            text: `${tutor.name} has been booked.`,
-            confirmButtonText: "Go to Booked Page",
-          }).then(() => {
-            navigate("/booked");
-          });
-        } else {
-          Swal.fire({
-            icon: "error",
-            title: "Booking Failed",
-            text: "Something went wrong. Please try again.",
-          });
-        }
-      })
-      .catch((err) => {
-        console.error("Booking error:", err);
-        Swal.fire({
-          icon: "error",
-          title: "Error",
-          text: "An error occurred. Please try again later.",
-        });
+    });
+
+    const data = await response.json();
+
+    if (data.insertedId) {
+      Swal.fire({
+        icon: "success",
+        title: "Booking Successful!",
+        text: `${tutor.name} has been booked.`,
+        confirmButtonText: "Go to Booked Page",
+      }).then(() => {
+        navigate("/booked");
       });
-  };
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Booking Failed",
+        text: "Something went wrong. Please try again.",
+      });
+    }
+  } catch (error) {
+    console.error("Booking error:", error);
+    Swal.fire({
+      icon: "error",
+      title: "Error",
+      text: "An error occurred. Please try again later.",
+    });
+  }
+};
+
 
   useEffect(() => {
     fetch(`https://tutor-s.vercel.app/tutors`)
