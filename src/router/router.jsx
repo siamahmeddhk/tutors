@@ -10,6 +10,7 @@ import Edit from "../pages/Edit";
 import Tutordtl from "../pages/Tutordtl";
 import Booked from "../pages/Booked";
 import ErrorPage from "../pages/ErrorPage";
+import HowToBeTutor from "../com/HowToBeTutor";
 
 export const router = createBrowserRouter([
   {
@@ -48,6 +49,10 @@ export const router = createBrowserRouter([
         {
           path: '/booked',
           Component: Booked,
+        },
+        {
+          path: '/to-be-tutor',
+          Component: HowToBeTutor
         },
         {
           path: '/signup',

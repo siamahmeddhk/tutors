@@ -93,7 +93,7 @@ const Login = () => {
             Continue with Google
           </button>
 
-          <p className="text-sm text-center mt-4">
+          <p className="text-sm text-blue-500 text-center mt-4">
             Don't have an account?{' '}
             <Link to="/signup" className="text-green-700 hover:underline">
               Register here

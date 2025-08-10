@@ -138,7 +138,7 @@ const Reg = () => {
             {loading ? "Loading..." : "Continue with Google"}
           </button>
 
-          <p className="text-sm text-center mt-4">
+          <p className="text-sm text-blue-500 text-center mt-4">
             Already have an account?{" "}
             <Link to="/login" className="text-green-700 hover:underline">
               Login here

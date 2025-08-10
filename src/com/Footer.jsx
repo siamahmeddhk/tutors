@@ -16,12 +16,12 @@ export default function Footer() {
                📚 TutorsTalk
             </span>
           </Link>
-          <p className="text-sm leading-relaxed">
+          <p className="text-sm leading-relaxed text-gray-900">
             Empowering learners and tutors worldwide through easy bookings and expert guidance.
           </p>
           <div className="flex items-center gap-2 text-sm">
             <FaMapMarkerAlt className="text-black" />
-            <span>123 Education St, Learning City</span>
+            <span className="text-gray-700">123 Education St, Learning City</span>
           </div>
         </div>
 
@@ -30,7 +30,7 @@ export default function Footer() {
           <h3 className="text-lg text-black font-semibold mb-6 pb-2 border-b border-gray-200 dark:border-gray-700 w-max">
             Quick Links
           </h3>
-          <ul className="space-y-3">
+          <ul className="space-y-3 text-gray-700">
             {[
               { path: "/", label: "Home" },
               { path: "/find-tutor", label: "Find Tutors" },
@@ -40,7 +40,7 @@ export default function Footer() {
               <li key={item.path}>
                 <Link 
                   to={item.path} 
-                  className="text-sm hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300 flex items-center gap-2 group"
+                  className="text-sm hover:text-gray-700 dark:hover:text-gray-900 transition-colors duration-300 flex items-center gap-2 group"
                 >
                   <span className="w-2 h-2 bg-blue-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
                   {item.label}
@@ -55,27 +55,27 @@ export default function Footer() {
           <h3 className="text-lg text-black font-semibold mb-6 pb-2 border-b border-gray-200 dark:border-gray-700 w-max">
             Contact Us
           </h3>
-          <ul className="space-y-4 text-sm">
+          <ul className="space-y-4 text-sm text-gray-700">
             <li className="flex items-start gap-3">
-              <FaEnvelope className="text-blue-500 mt-1 flex-shrink-0" />
+              <FaEnvelope className="text-gray-700 mt-1 flex-shrink-0" />
               <a 
                 href="mailto:help@tutorstalk.com" 
-                className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300"
+                className="hover:text-gray-700 dark:hover:text-gray-900 transition-colors duration-300"
               >
                 help@tutorstalk.com
               </a>
             </li>
             <li className="flex items-start gap-3">
-              <FaPhoneAlt className="text-blue-500 mt-1 flex-shrink-0" />
+              <FaPhoneAlt className="text-gray-700 mt-1 flex-shrink-0" />
               <a 
                 href="tel:+8801234567890" 
-                className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300"
+                className="hover:text-gary-700 dark:hover:text-gray-900 transition-colors duration-300"
               >
                 +880 1234 567 890
               </a>
             </li>
             <li className="flex items-start gap-3">
-              <FaMapMarkerAlt className="text-blue-500 mt-1 flex-shrink-0" />
+              <FaMapMarkerAlt className="text-gray-700 mt-1 flex-shrink-0" />
               <span>Support available 9AM-6PM</span>
             </li>
           </ul>

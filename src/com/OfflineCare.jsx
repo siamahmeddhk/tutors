@@ -16,32 +16,32 @@ export default function OfflineCare() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {/* Help Center */}
         <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
-          <FaMapMarkerAlt className="text-blue-600 dark:text-blue-400 text-3xl mb-3" />
+          <FaMapMarkerAlt className="text-teal-500 text-3xl mb-3" />
           <h3 className="text-xl font-semibold text-black dark:text-white mb-2">Visit Our Help Center</h3>
           <p className="text-sm text-black dark:text-white">
             Come to our physical help desk for offline assistance, weekdays 10am–5pm.
           </p>
-          <p className="text-sm mt-2 text-blue-600 dark:text-blue-400">House #22, Road 13, Dhanmondi, Dhaka</p>
+          <p className="text-sm mt-2 text-teal-500">House #22, Road 13, Dhanmondi, Dhaka</p>
         </div>
 
         {/* Call Support */}
         <div className="bg-teal-500 p-6 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
-          <FaPhoneAlt className="text-blue-800 text-3xl mb-3" />
+          <FaPhoneAlt className="text-black text-3xl mb-3" />
           <h3 className="text-xl font-semibold text-black dark:text-white mb-2">Call Our Support Team</h3>
           <p className="text-sm text-black dark:text-white">
             Speak with our friendly support agents between 9am–8pm.
           </p>
-          <p className="text-sm mt-2 text-blue-800">+880 1700 000 000</p>
+          <p className="text-sm mt-2 text-black">+880 1700 000 000</p>
         </div>
 
         {/* Email Help */}
         <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
-          <FaEnvelope className="text-blue-600 dark:text-blue-400 text-3xl mb-3" />
+          <FaEnvelope className="text-teal-500 text-3xl mb-3" />
           <h3 className="text-xl font-semibold text-black dark:text-white mb-2">Email Assistance</h3>
           <p className="text-sm text-black dark:text-white">
             Drop us an email and we’ll respond within 24 hours (excluding holidays).
           </p>
-          <p className="text-sm mt-2 text-blue-600 dark:text-blue-400">care@tutorstalk.com</p>
+          <p className="text-sm mt-2 text-teal-500">care@tutorstalk.com</p>
         </div>
       </div>
     </section>

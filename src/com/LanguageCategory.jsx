@@ -144,7 +144,7 @@ export default function LanguageCategory() {
                       "https://img.icons8.com/color/48/globe--v1.png";
                   }}
                 />
-                <h3 className="text-lg font-semibold text-black dark:text-gray-700">
+                <h3 className="text-lg font-semibold text-black dark:text-teal-500">
                   {cat.language}
                 </h3>
               </div>

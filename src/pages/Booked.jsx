@@ -135,13 +135,13 @@ const Booked = () => {
       ) : (
         <div className="grid md:grid-cols-2 gap-6">
           {booked.map((item) => (
-            <div key={item._id} className="bg-teal-500 rounded-lg shadow p-5">
+            <div key={item._id} className="bg-gray-100 shadow-teal-500 rounded-lg shadow-2xl text-black p-5">
               <img
                 src={item.tutorImage}
                 alt={item.tutorName}
-                className="w-full h-48 object-cover rounded-md mb-4"
+                className="w-full text-black h-48 object-cover rounded-md mb-4"
               />
-              <h3 className="text-xl font-semibold text-gray-800 dark:text-white">{item.tutorName}</h3>
+              <h3 className="text-xl font-semibold text-black">{item.tutorName}</h3>
               <p className="text-black">Language: {item.language}</p>
               <p className="text-black">Price: {item.price}</p>
               <p className="text-sm text-gray-black">

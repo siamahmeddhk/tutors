@@ -3,10 +3,10 @@ import { FaPassport, FaEnvelope } from "react-icons/fa";
 
 export default function Visa() {
   return (
-    <section className="max-w-6xl mx-auto my-12 px-4 py-10 bg-white dark:bg-gray-900 transition-colors duration-300">
+    <section className="max-w-6xl mx-auto my-12 px-4 py-10 bg-white dark:bg-gray-900 transition-colors duration-300 rounded-2xl">
       <div className="text-center mb-10">
-        <h1 className="text-3xl md:text-4xl font-bold text-blue-600 dark:text-blue-400 flex items-center justify-center gap-2">
-          <FaPassport className="text-blue-600 dark:text-blue-400" /> Visa Processing Help
+        <h1 className="text-3xl md:text-4xl font-bold text-teal-500 flex items-center justify-center gap-2">
+          <FaPassport className="text-teal-500" /> Visa Processing Help
         </h1>
         <p className="mt-3 text-gray-700 dark:text-gray-300">
           Need help with study or tutor-related visa processing? We're here to assist.
@@ -85,7 +85,7 @@ export default function Visa() {
             ></textarea>
             <button
               type="submit"
-              className="w-full bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full font-medium transition-colors duration-300 shadow-md hover:shadow-lg"
+              className="w-full bg-teal-500 hover:bg-teal-700 text-white px-6 py-2 rounded-full font-medium transition-colors duration-300 shadow-md hover:shadow-lg"
             >
               Submit Request
             </button>
