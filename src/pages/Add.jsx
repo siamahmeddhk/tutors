@@ -70,9 +70,9 @@ const Add = () => {
   };
 
   return (
-    <div className="max-w-2xl mx-auto my-10 p-8 bg-gradient-to-br from-gray-900 to-gray-800 rounded-xl shadow-2xl border border-gray-700">
+    <div className="max-w-2xl mx-auto my-10 p-8 bg-gray-100 rounded-xl shadow-2xl shadow-teal-500 border border-gray-700">
       <div className="text-center mb-8">
-        <h2 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-500">
+        <h2 className="text-3xl font-bold bg-clip-text bg-gradient-to-r text-black">
           Add New Tutorial
         </h2>
         <p className="text-gray-400 mt-2">Share your knowledge with the community</p>
@@ -81,7 +81,7 @@ const Add = () => {
       <form onSubmit={handleSubmit} className="space-y-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <label className="block text-sm font-medium text-gray-300 mb-1">User Name</label>
+            <label className="block text-sm font-medium text-black mb-1">User Name</label>
             <input 
               type="text" 
               value={user?.displayName || ''} 
@@ -90,7 +90,7 @@ const Add = () => {
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-300 mb-1">Email</label>
+            <label className="block text-sm font-medium text-black mb-1">Email</label>
             <input 
               type="email" 
               value={user?.email || ''} 
@@ -101,7 +101,7 @@ const Add = () => {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-300 mb-1">Image URL</label>
+          <label className="block text-sm font-medium text-black mb-1">Image URL</label>
           <input
             type="text"
             name="image"
@@ -115,7 +115,7 @@ const Add = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <label className="block text-sm font-medium text-gray-300 mb-1">Language</label>
+            <label className="block text-sm font-medium text-black mb-1">Language</label>
             <input
               type="text"
               name="language"
@@ -127,7 +127,7 @@ const Add = () => {
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-300 mb-1">Price ($)</label>
+            <label className="block text-sm font-medium text-black mb-1">Price ($)</label>
             <input
               type="number"
               name="price"
@@ -143,7 +143,7 @@ const Add = () => {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-300 mb-1">Description</label>
+          <label className="block text-sm font-medium text-black mb-1">Description</label>
           <textarea
             name="description"
             value={formData.description}
@@ -157,7 +157,7 @@ const Add = () => {
 
         <button 
           type="submit" 
-          className="w-full py-3 px-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-medium rounded-lg shadow-md hover:from-indigo-700 hover:to-purple-700 transition"
+          className="w-full py-3 px-4 bg-gradient-to-r from-teal-500 to-teal-600 text-white font-medium rounded-lg shadow-md hover:from-teal-500 hover:to-teal-700 transition"
         >
           Submit Tutorial
         </button>

@@ -71,7 +71,7 @@ const Myadd = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
-      <h2 className="text-3xl font-bold text-center mb-8 text-indigo-700">
+      <h2 className="text-3xl font-bold text-center mb-8 text-gray-500 dark:text-white">
         My Tutorials
       </h2>
 
@@ -88,7 +88,7 @@ const Myadd = () => {
       ) : (
         <div className="overflow-x-auto rounded-lg shadow">
           <table className="min-w-full divide-y divide-gray-200 bg-white">
-            <thead className="bg-indigo-600 text-white">
+            <thead className="bg-teal-500 text-black">
               <tr>
                 <th className="px-4 py-3 text-left text-sm font-semibold">Image</th>
                 <th className="px-4 py-3 text-left text-sm font-semibold">Language</th>
@@ -100,7 +100,7 @@ const Myadd = () => {
             </thead>
             <tbody className="divide-y divide-gray-100 text-gray-700">
               {tutors.map((tutor) => (
-                <tr key={tutor._id} className="hover:bg-gray-50">
+                <tr key={tutor._id} className="hover:bg-teal-100 bg-gray-100">
                   <td className="px-4 py-3">
                     <img
                       src={tutor.image || 'https://via.placeholder.com/80'}

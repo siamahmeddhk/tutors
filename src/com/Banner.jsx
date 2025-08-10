@@ -72,7 +72,7 @@ const Banner = () => {
                 </p>
                 <button
                   onClick={() => navigate('/find-tutor')}
-                  className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-full transition duration-300 transform hover:scale-105"
+                  className="bg-teal-500 text-black font-semibold py-3 px-6 rounded-full transition duration-300 transform hover:scale-105"
                 >
                   {slide.buttonText}
                 </button>

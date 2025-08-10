@@ -3,9 +3,9 @@ import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaTools } from "react-icons/fa"
 
 export default function OfflineCare() {
   return (
-    <section className="max-w-6xl mx-auto px-4 py-12">
-      <div className="text-center mb-10">
-        <h2 className="text-3xl md:text-4xl font-bold text-blue-600 dark:text-blue-400 flex items-center justify-center gap-2">
+    <section className="max-w-6xl mx-auto px-1 py-12">
+      <div className="text-center mb-4">
+        <h2 className="text-3xl md:text-4xl font-bold text-black dark:text-black flex items-center justify-center gap-2">
           <FaTools /> Offline Support & Care
         </h2>
         <p className="mt-3 text-black dark:text-white max-w-2xl mx-auto">
@@ -25,13 +25,13 @@ export default function OfflineCare() {
         </div>
 
         {/* Call Support */}
-        <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
-          <FaPhoneAlt className="text-blue-600 dark:text-blue-400 text-3xl mb-3" />
+        <div className="bg-teal-500 p-6 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
+          <FaPhoneAlt className="text-blue-800 text-3xl mb-3" />
           <h3 className="text-xl font-semibold text-black dark:text-white mb-2">Call Our Support Team</h3>
           <p className="text-sm text-black dark:text-white">
             Speak with our friendly support agents between 9am–8pm.
           </p>
-          <p className="text-sm mt-2 text-blue-600 dark:text-blue-400">+880 1700 000 000</p>
+          <p className="text-sm mt-2 text-blue-800">+880 1700 000 000</p>
         </div>
 
         {/* Email Help */}

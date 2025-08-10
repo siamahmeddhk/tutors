@@ -135,16 +135,16 @@ const Booked = () => {
       ) : (
         <div className="grid md:grid-cols-2 gap-6">
           {booked.map((item) => (
-            <div key={item._id} className="bg-white dark:bg-gray-800 rounded-lg shadow p-5">
+            <div key={item._id} className="bg-teal-500 rounded-lg shadow p-5">
               <img
                 src={item.tutorImage}
                 alt={item.tutorName}
                 className="w-full h-48 object-cover rounded-md mb-4"
               />
               <h3 className="text-xl font-semibold text-gray-800 dark:text-white">{item.tutorName}</h3>
-              <p className="text-gray-600 dark:text-gray-300">Language: {item.language}</p>
-              <p className="text-gray-600 dark:text-gray-300">Price: ${item.price}</p>
-              <p className="text-sm text-gray-500 mt-2 dark:text-gray-400">
+              <p className="text-black">Language: {item.language}</p>
+              <p className="text-black">Price: {item.price}</p>
+              <p className="text-sm text-gray-black">
                 Booked on: {item.bookingTime ? new Date(item.bookingTime).toLocaleString() : 'N/A'}
               </p>
 

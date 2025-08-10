@@ -126,7 +126,7 @@ const Tutordtl = () => {
 
   return (
     <div className="max-w-5xl mx-auto px-4 py-10">
-      <div className="grid md:grid-cols-2 gap-10 bg-white dark:bg-gray-900 rounded-xl shadow-2xl overflow-hidden p-6">
+      <div className="grid md:grid-cols-2 gap-10 bg-gray-100 rounded-xl shadow-2xl shadow-teal-500 overflow-hidden p-6">
         <img
           src={image}
           alt={name}
@@ -134,17 +134,17 @@ const Tutordtl = () => {
         />
         <div className="flex flex-col justify-between">
           <div>
-            <h2 className="text-3xl font-bold text-gray-800 dark:text-white mb-2">
+            <h2 className="text-3xl font-bold text-gray-800">
               {name}
             </h2>
-            <p className="text-gray-600 dark:text-gray-300 mb-2">
+            <p className="text-gray-600 mb-2">
               <span className="font-medium">Language:</span> {language}
             </p>
-            <p className="text-gray-600 dark:text-gray-300 mb-2">
+            <p className="text-gray-600 mb-2">
               <span className="font-medium">Reviews:</span> {review}
             </p>
             {price && (
-              <p className="text-gray-600 dark:text-gray-300 mb-4">
+              <p className="text-gray-6000 mb-4">
                 <span className="font-medium">Price:</span> {price}
               </p>
             )}
@@ -163,7 +163,7 @@ const Tutordtl = () => {
             </button>
             <button
               onClick={handelbook}
-              className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-all"
+              className=" text-white px-6 py-2 rounded-lg bg-teal-600 hover:bg-teal-900 transition-all"
             >
               Book Now
             </button>

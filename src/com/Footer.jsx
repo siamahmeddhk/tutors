@@ -4,13 +4,13 @@ import { Link } from "react-router";
 
 export default function Footer() {
   return (
-    <footer className="bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 text-gray-700 dark:text-gray-300 pt-14 pb-8">
+    <footer className="bg-teal-500 dark:text-gray-300 pt-14 pb-8 text-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-10">
         {/* Logo & Tagline */}
         <div className="space-y-4">
           <Link 
             to="/" 
-            className="flex items-center gap-2 text-2xl font-bold text-blue-600 dark:text-blue-400 group"
+            className="flex items-center gap-2 text-2xl font-bold text-black "
           >
             <span className="group-hover:text-blue-700 dark:group-hover:text-blue-300 transition-colors duration-300">
                📚 TutorsTalk
@@ -20,14 +20,14 @@ export default function Footer() {
             Empowering learners and tutors worldwide through easy bookings and expert guidance.
           </p>
           <div className="flex items-center gap-2 text-sm">
-            <FaMapMarkerAlt className="text-blue-500" />
+            <FaMapMarkerAlt className="text-black" />
             <span>123 Education St, Learning City</span>
           </div>
         </div>
 
         {/* Navigation Links */}
         <div>
-          <h3 className="text-lg font-semibold mb-6 pb-2 border-b border-gray-200 dark:border-gray-700 w-max">
+          <h3 className="text-lg text-black font-semibold mb-6 pb-2 border-b border-gray-200 dark:border-gray-700 w-max">
             Quick Links
           </h3>
           <ul className="space-y-3">
@@ -52,7 +52,7 @@ export default function Footer() {
 
         {/* Contact Info */}
         <div>
-          <h3 className="text-lg font-semibold mb-6 pb-2 border-b border-gray-200 dark:border-gray-700 w-max">
+          <h3 className="text-lg text-black font-semibold mb-6 pb-2 border-b border-gray-200 dark:border-gray-700 w-max">
             Contact Us
           </h3>
           <ul className="space-y-4 text-sm">
@@ -83,11 +83,11 @@ export default function Footer() {
 
         {/* Newsletter & Social */}
         <div>
-          <h3 className="text-lg font-semibold mb-6 pb-2 border-b border-gray-200 dark:border-gray-700">
+          <h3 className="text-lg text-black font-semibold mb-6 pb-2 border-b border-gray-200 dark:border-gray-700">
             Stay Connected
           </h3>
           <div className="mb-6">
-            <p className="text-sm mb-3">Subscribe to our newsletter:</p>
+            <p className="text-sm text-black mb-3">Subscribe to our newsletter:</p>
             <div className="flex">
               <input 
                 type="email" 
@@ -118,7 +118,7 @@ export default function Footer() {
       </div>
 
       {/* Bottom Copyright */}
-      <div className="text-center text-xs text-gray-500 dark:text-gray-400 mt-14 pt-6 border-t border-gray-200 dark:border-gray-700">
+      <div className="text-center text-xs text-black mt-14 pt-6 border-t border-gray-200 dark:border-gray-700">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <p>&copy; {new Date().getFullYear()} TutorsTalk. All rights reserved.</p>
           <div className="flex justify-center gap-4 mt-2">
