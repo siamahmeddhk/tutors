@@ -326,7 +326,7 @@ const Edit = () => {
 
   if (fetchingData) {
     return (
-      <div className="max-w-2xl mx-auto my-10 p-8 bg-gradient-to-br from-gray-900 to-gray-800 rounded-xl shadow-2xl border border-gray-700">
+      <div className="max-w-2xl mx-auto my-10 p-8 bg-gradient-to-br from-gray-900 to-gray-800 rounded-xl shadow-2xl shadow-teal-500">
         <div className="text-center">
           <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-indigo-500 mx-auto"></div>
           <p className="text-gray-400 mt-4">Loading tutorial data...</p>
@@ -336,9 +336,9 @@ const Edit = () => {
   }
 
   return (
-    <div className="max-w-2xl mx-auto my-10 p-8 bg-gradient-to-br from-gray-900 to-gray-800 rounded-xl shadow-2xl border border-gray-700">
+    <div className="max-w-2xl mx-auto my-10 p-8 bg-gary-100 rounded-xl   shadow-2xl shadow-teal-500 ">
       <div className="text-center mb-8">
-        <h2 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-500">
+        <h2 className="text-3xl  font-bold bg-clip-text text-black bg-gradient-to-r ">
           Update Tutorial
         </h2>
         <p className="text-gray-400 mt-2">Modify your tutorial details</p>
@@ -427,7 +427,7 @@ const Edit = () => {
           className={`w-full py-3 px-4 font-medium rounded-lg shadow-md transition-all ${
             loading
               ? 'bg-gray-600 cursor-not-allowed'
-              : 'bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white'
+              : 'bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-teal-500 hover:to-teal-700 text-white'
           }`}
         >
           {loading ? (

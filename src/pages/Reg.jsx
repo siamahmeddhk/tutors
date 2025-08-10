@@ -86,7 +86,7 @@ const Reg = () => {
   };
 
   return (
-    <div className="max-w-sm mt-12 mx-auto">
+    <div className="max-w-sm mt-12 mb-12 mx-auto shadow-2xl shadow-teal-500 ">
       <div className="card bg-white shadow-xl border border-gray-100 rounded-2xl overflow-hidden">
         <div className="card-body p-6">
           <h2 className="text-2xl font-semibold text-green-800 mb-4">Register</h2>

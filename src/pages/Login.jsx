@@ -63,8 +63,8 @@ const Login = () => {
   };
 
   return (
-    <div className="max-w-sm mt-12 mx-auto">
-      <div className="card bg-white shadow-xl border border-gray-100 rounded-2xl overflow-hidden">
+    <div className="max-w-sm mt-12 mx-auto mb-12 shadow-2xl shadow-teal-500">
+      <div className="card bg-gray-100 shadow-xl border border-gray-100 rounded-2xl overflow-hidden">
         <div className="card-body p-6">
           <h2 className="text-2xl font-semibold text-green-800 mb-4">Login</h2>
           <form onSubmit={handellogin} className="space-y-4">
