@@ -59,7 +59,7 @@ export default function OfflineCare() {
     <section className="py-16  duration-300">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-900 dark:text-white flex items-center justify-center gap-3">
+          <h2 className="text-2xl sm:text-5xl font-extrabold text-gray-900 dark:text-white flex items-center justify-center gap-3">
             <Wrench size={40} className="text-teal-500" />
             <span className="text-teal-500">Offline Support & Care</span>
           </h2>

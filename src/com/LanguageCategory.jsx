@@ -89,7 +89,7 @@ export default function LanguageCategory() {
     <section className="relative overflow-hidden py-20 transition-colors duration-300">
       <div className="absolute inset-0  dark:from-teal-900/20 dark:to-transparent z-0"></div>
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
-        <h2 className="text-4xl sm:text-5xl font-extrabold text-center text-gray-900 dark:text-white mb-16 flex items-center justify-center space-x-3">
+        <h2 className="text-2xl sm:text-5xl font-extrabold text-center text-gray-900 dark:text-white mb-16 flex items-center justify-center space-x-3">
           <Globe size={40} className="text-teal-500" />
           <span className="text-teal-500">Explore by Language</span>
         </h2>

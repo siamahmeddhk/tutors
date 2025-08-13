@@ -161,7 +161,7 @@ const Stats = () => {
   return (
     <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8 font-sans">
       <div className="text-center mb-10">
-        <h2 className="text-3xl sm:text-5xl font-extrabold text-center text-teal-500 dark:text-teal-400 mb-10 flex items-center justify-center space-x-3">
+        <h2 className="text-2xl sm:text-5xl font-extrabold text-center text-teal-500 dark:text-teal-400 mb-10 flex items-center justify-center space-x-3">
           <BarChart size={40} />
           <span>Our Platform at a Glance</span>
         </h2>

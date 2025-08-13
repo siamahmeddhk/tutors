@@ -115,7 +115,7 @@ export default function Visa() {
     <section className="relative overflow-hidden py-20  transition-colors duration-300">
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
         <div className="text-center mb-16">
-          <h1 className="text-4xl sm:text-5xl font-extrabold text-teal-500 dark:text-teal-500 flex items-center justify-center space-x-3">
+          <h1 className="text-2xl sm:text-5xl font-extrabold text-teal-500 dark:text-teal-500 flex items-center justify-center space-x-3">
             <Globe size={40} />
             <span>Visa Processing Help</span>
           </h1>
