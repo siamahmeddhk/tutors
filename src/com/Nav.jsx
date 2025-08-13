@@ -304,30 +304,30 @@ export default function Nav() {
                 }
                 onClick={() => setMobileMenuOpen(false)}
               >
-                🔍 How to be a tutoe
+                🔍 How to be a tutor
               </NavLink>
               
 
-              <button
+              {user && (<button
                 onClick={() => handleProtectedClick("/add")}
                 className="w-full text-left px-4 py-3 rounded-lg font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-200"
               >
                 ➕ Add Tutorials
-              </button>
+              </button>)}
 
-              <button
+              {user && (<button
                 onClick={() => handleProtectedClick("/my-added")}
                 className="w-full text-left px-4 py-3 rounded-lg font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-200"
               >
                 📚 My Tutorials
-              </button>
+              </button>)}
 
-              <button
+              {user && (<button
                 onClick={() => handleProtectedClick("/booked")}
                 className="w-full text-left px-4 py-3 rounded-lg font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-200"
               >
                 📖 My Booked Tutors
-              </button>
+              </button>)}
             </nav>
 
             {/* User Section - Only show if user is logged in */}
